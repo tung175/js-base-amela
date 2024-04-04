@@ -159,9 +159,9 @@ const sub_string = (string) => {
   for (let i = 0; i < string.length; i++) {
     // console.log("check i:", i);
     for (let j = i + 1; j <= string.length; j++) {
-    //   console.log("check j:", j);
+      //   console.log("check j:", j);
       sub_string.push(string.slice(i, j));
-    //   console.log("check sub_string: ", string.slice(i, j));
+      //   console.log("check sub_string: ", string.slice(i, j));
     }
   }
 
@@ -173,17 +173,16 @@ const sub_string = (string) => {
 
 // b12
 let ascArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-let toDownArr = [9, 8, 7, 6, 5, 4, 3, 2, 1]
+let toDownArr = [9, 8, 7, 6, 5, 4, 3, 2, 1];
 
 const checkAsc = (arr) => {
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] < arr[i - 1]) {
-            return false
-        }
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < arr[i - 1]) {
+      return false;
     }
-    return true
-} 
-
+  }
+  return true;
+};
 
 // console.log(checkAsc(ascArr));
 
@@ -192,13 +191,90 @@ const checkAsc = (arr) => {
 // b13
 let oddArr = [7, 5, 3, 1];
 const checkDesc = (arr) => {
-    for (let i = 1; i < arr.length; i++) {
-        if (arr[i] % 2 === 0 || arr[i] >= arr[i - 1]) {
-            return false
-        }
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] % 2 === 0 || arr[i] >= arr[i - 1]) {
+      return false;
     }
-    return true
-}
+  }
+  return true;
+};
 
 // console.log(checkDesc(oddArr));
 
+// -----------------//
+// -----Object----//
+// -----------------//
+
+// b1
+
+let obj = {
+  name: "Nguyen Van A",
+  age: 25,
+  email: "abc@gmail.com",
+};
+
+const getKeysInObj = (obj) => {
+
+  // return Object.keys(obj)
+
+  let keyOfObj = []
+  for (let key in obj) {
+    keyOfObj.push(key)
+  }
+  return keyOfObj
+}
+
+// console.log(getKeysInObj(obj));
+
+// -----------------//
+
+// b2
+
+const getValuesInObj = (obj) => {
+  // return Object.values(obj)
+  let valueOfObj = []
+  for (let key in obj) {
+    valueOfObj.push(obj[key])
+  }
+  return valueOfObj
+}
+// console.log(getValuesInObj(obj));
+
+// -----------------//
+
+// b3
+let key = "name"
+const checkExistObj = (obj, key) => {
+  if (key in obj) {
+    return true
+  }
+  return false
+}
+
+// console.log(checkExistObj(obj, key));
+// -----------------//
+
+// b4
+const getLengthObj = (obj) => {
+  return Object.keys(obj).length
+}
+
+// console.log(getLengthObj(obj));
+
+// -----------------//
+
+// b5
+let user = {
+  name: "Nguyen Van A",
+  age: 26,
+  isStatus: true,
+};
+const getInfoUser = (user) => {
+  let {name, age, isStatus} = user
+  if (age > 25 && isStatus === true) {
+    return user
+  }
+  return "Not found user"
+}
+
+console.log(getInfoUser(user));
