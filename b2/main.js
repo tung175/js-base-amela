@@ -264,20 +264,47 @@ const getLengthObj = (obj) => {
 // -----------------//
 
 // b5
-let user = {
-  name: "Nguyen Van A",
-  age: 26,
-  isStatus: true,
-};
+let user = [
+  {
+    name: "Nguyen Van A",
+    age: 26,
+    isStatus: true,
+  },
+  {
+    name: "Nguyen Van B",
+    age: 25,
+    isStatus: false,
+  },
+  {
+    name: "Nguyen Van V",
+    age: 30,
+    isStatus: false,
+  },
+  {
+    name: "Nguyen Van C",
+    age: 22,
+    isStatus: true,
+  },
+  {
+    name: "Nguyen Van S",
+    age: 20,
+    isStatus: false,
+  },
+  {
+    name: "Nguyen Van A",
+    age: 16,
+    isStatus: true,
+  },
+];
 const getInfoUser = (user) => {
   // let {name, age, isStatus} = user
   // if (age > 25 && isStatus === true) {
   //   return user
   // }
-  // let data = user.filter((age, isStatus) => age > 25 && isStatus === true)
-  if (Object.values(user).filter((age, isStatus) => age > 25 && isStatus === true)) {
-    return user;
+ let data = user.filter(user => user.age > 25 && user.isStatus === true)
+  if (data) {
+    return data;
   }
   return "Not found user";
 };
-
+// console.log(getInfoUser(user));
