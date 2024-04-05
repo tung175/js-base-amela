@@ -7,21 +7,22 @@
 let b1 = [2, 1, 3];
 
 const minNumber = (arr) => {
-  return Math.min(arr);
+  return Math.min(...arr);
 };
 // console.log(minNumber(b1));
 // -----------------//
 
 // b2
-let b2 = [2, 4, 1, 6, 3];
+let b2 = [2, 4, 1, 6, 3, 4];
 
 const findSecInArr = (arr) => {
-  arr.sort((a, b) => {
-    return b - a;
+  // console.log(arr);
+  // console.log([... new Set(arr)]);
+  let removeDupArr = [...new Set(arr)].sort((a, b) => {
+    b - a;
   });
-  return arr[1];
+  return removeDupArr[1];
 };
-
 // console.log(findSecInArr(b2));
 
 // -----------------//
@@ -214,15 +215,13 @@ let obj = {
 };
 
 const getKeysInObj = (obj) => {
-
-  // return Object.keys(obj)
-
-  let keyOfObj = []
-  for (let key in obj) {
-    keyOfObj.push(key)
-  }
-  return keyOfObj
-}
+  return Object.keys(obj);
+  // let keyOfObj = []
+  // for (let key in obj) {
+  //   keyOfObj.push(key)
+  // }
+  // return keyOfObj
+};
 
 // console.log(getKeysInObj(obj));
 
@@ -231,33 +230,34 @@ const getKeysInObj = (obj) => {
 // b2
 
 const getValuesInObj = (obj) => {
-  // return Object.values(obj)
-  let valueOfObj = []
-  for (let key in obj) {
-    valueOfObj.push(obj[key])
-  }
-  return valueOfObj
-}
+  return Object.values(obj);
+  // let valueOfObj = []
+  // for (let key in obj) {
+  //   valueOfObj.push(obj[key])
+  // }
+  // return valueOfObj
+};
 // console.log(getValuesInObj(obj));
 
 // -----------------//
 
 // b3
-let key = "name"
+let key = "name";
 const checkExistObj = (obj, key) => {
-  if (key in obj) {
-    return true
-  }
-  return false
-}
+  if (obj.hasOwnProperty(key)) return true;
+  // if (key in obj) {
+  //   return true
+  // }
+  return false;
+};
 
 // console.log(checkExistObj(obj, key));
 // -----------------//
 
 // b4
 const getLengthObj = (obj) => {
-  return Object.keys(obj).length
-}
+  return Object.keys(obj).length;
+};
 
 // console.log(getLengthObj(obj));
 
@@ -270,11 +270,14 @@ let user = {
   isStatus: true,
 };
 const getInfoUser = (user) => {
-  let {name, age, isStatus} = user
-  if (age > 25 && isStatus === true) {
-    return user
+  // let {name, age, isStatus} = user
+  // if (age > 25 && isStatus === true) {
+  //   return user
+  // }
+  // let data = user.filter((age, isStatus) => age > 25 && isStatus === true)
+  if (Object.values(user).filter((age, isStatus) => age > 25 && isStatus === true)) {
+    return user;
   }
-  return "Not found user"
-}
+  return "Not found user";
+};
 
-console.log(getInfoUser(user));
