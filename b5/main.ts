@@ -48,14 +48,12 @@ const isWeekend = (): string => {
     "Saturday",
   ];
 
-  days.forEach((day: string, index: number) => {
-    // Check if the index of day value is equal to the returned value of getDay()
-    index = new Date().getDay();
-    if (index === 0 || index === 6) {
-      console.log("Today is " + day);
-    }
-  });
-  return "Not the weekend today";
+  let today: number = new Date().getDay();
+
+  if (today === 0 || today === 6) {
+    return "Today is weekend";
+  }
+  return `Today is ${days[today]}`;
 };
 
 // console.log(isWeekend());
@@ -83,7 +81,7 @@ const calculateSinceStartOfYear = (): number => {
 
   let millisecondsSinceStartOfYear =
     currentDate.getTime() - startDate.getTime();
-
+    
   return Math.floor(millisecondsSinceStartOfYear / (1000 * 3600 * 24));
 };
 
@@ -131,17 +129,12 @@ const isEarlyWeek = (): string => {
     "Friday",
     "Saturday",
   ];
-
-  days.forEach((day: string, index: number) => {
-    // Check if the index of day value is equal to the returned value of getDay()
-    index = new Date().getDay();
-    if (index === 1) {
-      console.log("Today is " + day);
-    }
-  });
-  return "Not early week today";
+  let today: number = new Date().getDay();
+  if (today === 1) {
+    return "Today is early weekend";
+  }
+  return `Today is ${days[today]}`;
 };
-
 // -----------------//
 
 // b8
@@ -159,29 +152,85 @@ const calculateLastDayInMouth = (currentDate: Date): number => {
 // -----------------//
 
 // b9
+const countdownToNewYear = () => {
+  const currentDate: Date = new Date();
+  const newYear: Date = new Date(currentDate.getFullYear() + 1, 0, 1); 
 
-const countDownNewYear = (): void => {
-  let currentDate: Date = new Date();
-  let startYear: Date = new Date(currentDate.getFullYear() + 1, 0, 1);
+  let daysRemaining: number = Math.ceil((newYear.getTime() - currentDate.getTime()) / (1000 * 60 * 60 * 24));
+  let hoursRemaining: number = 24 - currentDate.getHours() - 1;
+  let minutesRemaining: number = 59 - currentDate.getMinutes();
+  let secondsRemaining: number = 59 - currentDate.getSeconds();
 
-  let countDown: number = startYear.getTime() - currentDate.getTime();
-  let convertToS: number = Math.floor(countDown / 1000);
-
-  console.log(convertToS);
-
+  console.log("Time until New Year:", `${daysRemaining.toString().padStart(2, '0')} day ${hoursRemaining.toString().padStart(2, '0')}:${minutesRemaining.toString().padStart(2, '0')}:${secondsRemaining.toString().padStart(2, '0')}`);
   setTimeout(() => {
-    if (convertToS > 0) {
-      countDownNewYear();
-    }
-  }, 1000);
-};
-// countDownNewYear()
-
+    countdownToNewYear()
+  }, 1000)
+}
+countdownToNewYear()
 // -----------------//
 
 // b10
 
-let user = {
+// const resetData = (user: any):any => {
+//   const resetObject = (obj: any): any => {
+//     for (let key in obj) {
+//       // console.log("check for: ", obj);
+//       if (Array.isArray(obj[key])) {
+//         if (obj[key].every((e: string) => typeof e === "string")) {
+//           obj[key] = Array(obj[key].length).fill("");
+//         } else if (obj[key].every((e: number) => typeof e === "number")) {
+//           obj[key] = Array(obj[key].length).fill(0);
+//         }
+//         // console.log("check array:", obj[key]);
+//       } else if (typeof obj[key] === "object" && obj[key] !== null) {
+//         // console.log("check obj: ", obj[key]);
+//         obj[key] = resetObject(obj[key]);
+//       } else if (typeof obj[key] === "number") {
+//         obj[key] = 0;
+//       } else if (typeof obj[key] === "boolean") {
+//         obj[key] = false;
+//       } else {
+//         obj[key] = "";
+//       }
+//     }
+//     // console.log("check obj", obj);
+//     return obj
+//   };
+//   return resetData(user);
+// }
+
+interface IUser {
+  name: string;
+  age: number;
+  isStatus: boolean;
+  a: {
+    a: number[];
+    b: {
+      c: number;
+    };
+  };
+  c: string[];
+}
+const resetData = (user: IUser): IUser => {
+  const resetObject = (obj: any): any => {
+    for (let key in obj) {
+      if (Array.isArray(obj[key])) {
+        obj[key] = Array(obj[key].length).fill(typeof obj[key][0] === "number" ? 0 : "");
+      } else if (typeof obj[key] === "object" && obj[key] !== null) {
+        obj[key] = resetObject(obj[key]);
+      } else if (typeof obj[key] === "number") {
+        obj[key] = 0;
+      } else if (typeof obj[key] === "boolean") {
+        obj[key] = false;
+      } else {
+        obj[key] = "";
+      }
+    }
+    return obj;
+  };
+  return resetObject(user);
+};
+let user: IUser = {
   name: "Nguyen Van A",
   age: 26,
   isStatus: true,
@@ -193,47 +242,22 @@ let user = {
   },
   c: ["a", "v", "d"],
 };
-const resetObject = (obj: any): void => {
-  for (let key in obj) {
-    // console.log("check for: ",obj);
-    if (Array.isArray(obj[key])) {
-      if (obj[key].every((e: string) => typeof e === "string")) {
-        obj[key] = Array(obj[key].length).fill("");
-      }
-      if (obj[key].every((e: number) => typeof e === "number")) {
-        obj[key] = Array(obj[key].length).fill(0);
-      }
-    //   console.log("check array:", obj[key]);
-    } else if (typeof obj[key] === "object") {
-    //   console.log("check obj: ", obj[key]);
-      resetObject(obj[key]);
-    } else if (typeof obj[key] === "number") {
-      obj[key] = 0;
-    } else if (typeof obj[key] === "boolean") {
-      obj[key] = false;
-    } else {
-      obj[key] = "";
-    }
-  }
-}
+// console.log(resetData(user));
 
-// console.log("Init data:", user);
-// resetObject(user);
-// console.log("Reset data:", user);
 
 // -----------------//
 
 // b11
 let currentTime = new Date();
-let s: number = 1100
-const plusSec = (currentTime:string, s: number) => {
-    let currentDate: Date = new Date(currentTime)
-    // console.log(currentDate);
-    if (s > 1000) {
-        return `X must less than 1000`
-    }
-    currentDate.setSeconds(currentDate.getSeconds() + s)
-    return currentDate.toTimeString().split(" ")[0]
-}
+let s: number = 1100;
+const plusSec = (currentTime: string, s: number) => {
+  let currentDate: Date = new Date(currentTime);
+  // console.log(currentDate);
+  if (s > 1000) {
+    return `X must less than 1000`;
+  }
+  currentDate.setSeconds(currentDate.getSeconds() + s);
+  return currentDate.toTimeString().split(" ")[0];
+};
 
-console.log(plusSec(currentTime.toISOString(), s));
+// console.log(plusSec(currentTime.toISOString(), s));
