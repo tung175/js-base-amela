@@ -3,23 +3,25 @@
 // -----------------//
 
 // b1
-let string: string = "/";
-const getCurrentDate = (string: string): string => {
-  let objectDate = new Date();
-
+let separator: string = "/"
+const getCurrentDate = (separator: string): string => {
+  const objectDate = new Date();
   let day = objectDate.getDate();
   // console.log(day);
-
   let month = objectDate.getMonth();
   // console.log(month + 1);
-
   let year = objectDate.getFullYear();
   // console.log(year);
-  // return day + string + month + string + year
-  return `${day}${string}${month + 1}${string}${year}`;
-};
+  let formattedDay = day < 10 ? "0" + day : day.toString();
+  let formattedMonth = month < 10 ? "0" + month : month.toString();
 
-// console.log(getCurrentDate(string));
+  return `${formattedDay}${separator}${formattedMonth}${separator}${year}`;
+
+  // console.log(objectDate.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' }));
+  // return objectDate.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })
+};
+console.log(getCurrentDate(separator));
+
 
 // -----------------//
 
@@ -81,7 +83,7 @@ const calculateSinceStartOfYear = (): number => {
 
   let millisecondsSinceStartOfYear =
     currentDate.getTime() - startDate.getTime();
-    
+
   return Math.floor(millisecondsSinceStartOfYear / (1000 * 3600 * 24));
 };
 
@@ -154,19 +156,28 @@ const calculateLastDayInMouth = (currentDate: Date): number => {
 // b9
 const countdownToNewYear = () => {
   const currentDate: Date = new Date();
-  const newYear: Date = new Date(currentDate.getFullYear() + 1, 0, 1); 
+  const newYear: Date = new Date(currentDate.getFullYear() + 1, 0, 1);
 
-  let daysRemaining: number = Math.ceil((newYear.getTime() - currentDate.getTime()) / (1000 * 60 * 60 * 24));
+  let daysRemaining: number = Math.ceil(
+    (newYear.getTime() - currentDate.getTime()) / (1000 * 60 * 60 * 24)
+  );
   let hoursRemaining: number = 24 - currentDate.getHours() - 1;
   let minutesRemaining: number = 59 - currentDate.getMinutes();
   let secondsRemaining: number = 59 - currentDate.getSeconds();
 
-  console.log("Time until New Year:", `${daysRemaining.toString().padStart(2, '0')} day ${hoursRemaining.toString().padStart(2, '0')}:${minutesRemaining.toString().padStart(2, '0')}:${secondsRemaining.toString().padStart(2, '0')}`);
+  console.log(
+    "Time until New Year:",
+    `${daysRemaining.toString().padStart(2, "0")} day ${hoursRemaining
+      .toString()
+      .padStart(2, "0")}:${minutesRemaining
+      .toString()
+      .padStart(2, "0")}:${secondsRemaining.toString().padStart(2, "0")}`
+  );
   setTimeout(() => {
-    countdownToNewYear()
-  }, 1000)
-}
-countdownToNewYear()
+    countdownToNewYear();
+  }, 1000);
+};
+// countdownToNewYear()
 // -----------------//
 
 // b10
@@ -215,7 +226,9 @@ const resetData = (user: IUser): IUser => {
   const resetObject = (obj: any): any => {
     for (let key in obj) {
       if (Array.isArray(obj[key])) {
-        obj[key] = Array(obj[key].length).fill(typeof obj[key][0] === "number" ? 0 : "");
+        obj[key] = Array(obj[key].length).fill(
+          typeof obj[key][0] === "number" ? 0 : ""
+        );
       } else if (typeof obj[key] === "object" && obj[key] !== null) {
         obj[key] = resetObject(obj[key]);
       } else if (typeof obj[key] === "number") {
@@ -243,7 +256,6 @@ let user: IUser = {
   c: ["a", "v", "d"],
 };
 // console.log(resetData(user));
-
 
 // -----------------//
 
