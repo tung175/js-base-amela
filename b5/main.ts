@@ -100,9 +100,7 @@ const calculateAge = (): number => {
 
   let birthDate: Date = new Date(+year, +month, +day);
   // console.log(+month);
-
   // console.log(birthDate);
-
   let currentDate: Date = new Date();
   // console.log(currentDate);
   let age: number = currentDate.getFullYear() - birthDate.getFullYear();

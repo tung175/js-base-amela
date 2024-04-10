@@ -1,9 +1,72 @@
-.red{
-    border: 1px solid red;
-}
+// .red {
+//   border: 1px solid red;
+// }
 
-.login-container{
-    background: url("../../assets/bg1.png") no-repeat fixed center;
-    min-height: 100vh;  
-    // min-width: none;
+// .login-container {
+//   background: url("../../assets/bg1.png") no-repeat fixed center;
+//   min-height: 100vh;
+//   // min-width: none;
+//   padding-top: 20vh;
+//   .content-right {
+//     border: 3px solid #fbbc1a;
+//     border-radius: 8px;
+//     background-color: #999595;
+//     box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+//     box-sizing: border-box;
+//     // height: 80%;
+//     .main-content-right {
+//       position: relative;
+//       .img-camera {
+//         position: absolute;
+//         background: url("../../assets/image\ 1abc.svg") no-repeat #999595;
+//         min-height: 160px;
+//         min-width: 155px;
+//         bottom: 24rem;
+//         border-radius: 72px;
+//         left: 12rem;
+//         border: 3px solid #fbbc1a;
+//       }
+//       .i-username {
+//         position: absolute;
+//         top: 64px;
+//         font-size: 56px;
+//         background: white;
+//         // left: 112px;
+//       }
+//       .i-password {
+//         position: absolute;
+//         top: 168px;
+//         font-size: 58px;
+//         background: white;
+//         // left: 112px;
+//       }
+//       .input {
+//         // max-width: 80%;
+//         background: #f3f1f1;
+//         // margin: 0 auto;
+//         border: 0px;
+//         outline: none;
+//       }
+//       .btn-login {
+//         background-color: #d9d9d9;
+//       }
+//     }
+//   }
+// }
+@media screen and (max-width: 320px) {
+  div {
+    width: 100%;
+  }
+}
+.login-form {
+  max-width: 300px;
+}
+.login-form-forgot {
+  float: right;
+}
+.ant-col-rtl .login-form-forgot {
+  float: left;
+}
+.login-form-button {
+  width: 100%;
 }
