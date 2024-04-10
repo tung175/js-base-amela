@@ -3,7 +3,7 @@
 // -----------------//
 
 // b1
-let separator: string = "/"
+let separator: string = "/";
 const getCurrentDate = (separator: string): string => {
   const objectDate = new Date();
   let day = objectDate.getDate();
@@ -20,8 +20,7 @@ const getCurrentDate = (separator: string): string => {
   // console.log(objectDate.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' }));
   // return objectDate.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })
 };
-console.log(getCurrentDate(separator));
-
+// console.log(getCurrentDate(separator));
 
 // -----------------//
 
@@ -72,6 +71,17 @@ const getHourAndMin = (): string => {
   return `${h}:${m}`;
 };
 
+const minutesToHoursAndMinutes = (
+  minutes: number
+): { hours: number; minutes: number } => ({
+  hours: Math.floor(minutes / 60),
+  minutes: minutes % 60,
+});
+
+const totalMinutes = 145;
+const { hours, minutes } = minutesToHoursAndMinutes(totalMinutes);
+console.log(`Total: ${hours} hours and ${minutes} minutes.`);
+
 // console.log(getHourAndMin());
 
 // -----------------//
@@ -109,7 +119,7 @@ const calculateAge = (): number => {
     (currentDate.getMonth() === birthDate.getMonth() &&
       currentDate.getDay() < birthDate.getDay())
   ) {
-    return age--;
+    return --age;
   }
   return age;
 };
