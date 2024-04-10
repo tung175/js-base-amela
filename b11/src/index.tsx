@@ -3,14 +3,16 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ConfigProvider } from "antd";
-
+import { BrowserRouter } from "react-router-dom";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <ConfigProvider theme={{hashed: false}}>
-      <App />
+    <ConfigProvider theme={{ hashed: false }}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </ConfigProvider>
   </React.StrictMode>
 );
