@@ -232,19 +232,40 @@ interface IUser {
 }
 const resetData = (user: IUser): IUser => {
   const resetObject = (obj: any): any => {
+    // for (let key in obj) {
+    //   if (Array.isArray(obj[key])) {
+    //     obj[key] = Array(obj[key].length).fill(
+    //       typeof obj[key][0] === "number" ? 0 : ""
+    //     );
+    //   } else if (typeof obj[key] === "object" && obj[key] !== null) {
+    //     obj[key] = resetObject(obj[key]);
+    //   } else if (typeof obj[key] === "number") {
+    //     obj[key] = 0;
+    //   } else if (typeof obj[key] === "boolean") {
+    //     obj[key] = false;
+    //   } else {
+    //     obj[key] = "";
+    //   }
+    // }
+    // return obj;
     for (let key in obj) {
-      if (Array.isArray(obj[key])) {
-        obj[key] = Array(obj[key].length).fill(
-          typeof obj[key][0] === "number" ? 0 : ""
-        );
-      } else if (typeof obj[key] === "object" && obj[key] !== null) {
-        obj[key] = resetObject(obj[key]);
-      } else if (typeof obj[key] === "number") {
-        obj[key] = 0;
-      } else if (typeof obj[key] === "boolean") {
-        obj[key] = false;
-      } else {
-        obj[key] = "";
+      switch (true) {
+        case Array.isArray(obj[key]):
+          obj[key] = Array(obj[key].length).fill(
+            typeof obj[key][0] === "number" ? 0 : ""
+          );
+          break;
+        case typeof obj[key] === "object" && obj[key] !== null:
+          obj[key] = resetObject(obj[key]);
+          break;
+        case typeof obj[key] === "number":
+          obj[key] = 0;
+          break;
+        case typeof obj[key] === "boolean":
+          obj[key] = false;
+          break;
+        default:
+          obj[key] = "";
       }
     }
     return obj;
@@ -263,7 +284,7 @@ let user: IUser = {
   },
   c: ["a", "v", "d"],
 };
-// console.log(resetData(user));
+console.log(resetData(user));
 
 // -----------------//
 
