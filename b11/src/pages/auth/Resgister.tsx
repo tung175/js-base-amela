@@ -1,52 +1,48 @@
 import React, { useState } from "react";
-import {
-  Col,
-  Divider,
-  Form,
-  Input,
-  Radio,
-  Row,
-  Button,
-  Checkbox,
-  FormProps,
-} from "antd";
-import "../../styles/Login.scss";
-import {
-  BackgroundContentRight,
-  Title,
-  DescLogin,
-  LinkAccount,
-  Account,
-  WithOutLogin,
-  Logo1,
-  Logo2,
-  Logo3,
-  Logo4,
-  LoginWithOut,
-  CustomInput,
-  CustomCheckbox,
-  CustomBtnLogin,
-  CustomInputPassword,
-} from "../../styles/styled";
-import styled, { css } from "styled-components";
-import bg from "../../assets/Rectangle1.png";
-import { useNavigate } from "react-router-dom";
+// import {
+//   Col,
+//   Form,
+//   Input,
+//   Row,
+//   Button,
+//   Checkbox,
+// } from "antd";
+// import "../../styles/Login.scss";
+// import {
+//   BackgroundContentRight,
+//   Title,
+//   DescLogin,
+//   LinkAccount,
+//   Account,
+//   WithOutLogin,
+//   Logo1,
+//   Logo2,
+//   Logo3,
+//   Logo4,
+//   LoginWithOut,
+//   CustomCheckbox,
+//   CustomBtnLogin,
+//   CustomInput,
+//   CustomInputPassword,
+// } from "../../styles/styled";
+// import styled, { css } from "styled-components";
+// import bg from "../../assets/Rectangle1.png";
+// import { useNavigate } from "react-router-dom";
 
-
-const Login: React.FC = () => {
-  const history = useNavigate();
-
-    const handleOnClickSignIn = (e: any) => {
-        e.preventDefault();
-        history('/register');
-    }
-  const onFinish = (values: any) => {
-    console.log("Received values of form: ", values);
-  };
+const Resgister: React.FC = () => {
+  //   const history = useNavigate();
+  //   const handleOnClickLogin= (e: any) => {
+  //       e.preventDefault();
+  //       history('/login');
+  //   }
+  // const onFinish = (values: any) => {
+  //   console.log("Received values of form: ", values);
+  // };
 
   return (
     <>
-      <div
+      
+      {/* <div
       // style={{
       //   display: "flex",
       //   alignItems: "center",
@@ -71,20 +67,36 @@ const Login: React.FC = () => {
           >
             <div style={{ width: "100%" }}>
               <Form
-                name="loginForm"
+                name="ResgisterForm"
                 initialValues={{ remember: true }}
                 onFinish={onFinish}
                 style={{ maxWidth: "300px", margin: "0 auto" }}
               >
-                <Title>Login</Title>
-                <DescLogin>Login your account in a seconds</DescLogin>
+                <Title>Sign in</Title>
+                <DescLogin>Create your account in a seconds</DescLogin>
                 <Form.Item
-                  name="username"
+                  name="firstName"
                   rules={[
-                    { required: true, message: "Please input your Username!" },
+                    { required: true, message: "Please input your First Name!" },
                   ]}
                 >
-                  <CustomInput placeholder="Username" />
+                  <CustomInput placeholder="First Name" />
+                </Form.Item>
+                <Form.Item
+                  name="lastName"
+                  rules={[
+                    { required: true, message: "Please input your Last Name!" },
+                  ]}
+                >
+                  <CustomInput placeholder="Last Name" />
+                </Form.Item>
+                <Form.Item
+                  name="emailAddress"
+                  rules={[
+                    { required: true, message: "Please input your Email address!" },
+                  ]}
+                >
+                  <CustomInput placeholder="Email address" />
                 </Form.Item>
                 <Form.Item
                   name="password"
@@ -92,28 +104,25 @@ const Login: React.FC = () => {
                     { required: true, message: "Please input your Password!" },
                   ]}
                 >
-                  <CustomInputPassword placeholder="Password" />
+                  <CustomInputPassword placeholder="Password" value={'password'}/>
                 </Form.Item>
                 <Form.Item>
                   <Form.Item name="remember" valuePropName="checked" noStyle>
                     <CustomCheckbox>
                       <span style={{ color: "#818181" }}>
-                        Keep me logged in
+                      I agree to the terms and privacy policy
                       </span>
                     </CustomCheckbox>
                   </Form.Item>
-                  <Account style={{ float: "right" }} href="#">
-                    Forgot password?
-                  </Account>
                 </Form.Item>
                 <Form.Item>
                   <CustomBtnLogin type="primary" htmlType="submit">
-                    Log in
+                  Create An Account
                   </CustomBtnLogin>
                 </Form.Item>
                 <Form.Item>
-                  <LinkAccount>Don't have an account? </LinkAccount>
-                  <Account onClick={(e) => handleOnClickSignIn(e)}>Sign up</Account>
+                  <LinkAccount>Already a member? </LinkAccount>
+                  <Account onClick={(e) => handleOnClickLogin(e)}>Login</Account>
                 </Form.Item>
                 <Form.Item>
                   <LoginWithOut>
@@ -132,8 +141,8 @@ const Login: React.FC = () => {
             </div>
           </Col>
         </Row>
-      </div>
+      </div> */}
     </>
   );
 };
-export default Login;
+export default Resgister;

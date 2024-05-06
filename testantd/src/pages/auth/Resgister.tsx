@@ -1,49 +1,48 @@
 import React, { useState } from "react";
-import {
-  Col,
-  Form,
-  Input,
-  Row,
-  Button,
-  Checkbox,
-} from "antd";
-import "../../styles/Login.scss";
-import {
-  BackgroundContentRight,
-  Title,
-  DescLogin,
-  LinkAccount,
-  Account,
-  WithOutLogin,
-  Logo1,
-  Logo2,
-  Logo3,
-  Logo4,
-  LoginWithOut,
-  CustomCheckbox,
-  CustomBtnLogin,
-  CustomInput,
-  CustomInputPassword,
-} from "../../styles/styled";
-import styled, { css } from "styled-components";
-import bg from "../../assets/Rectangle1.png";
-import { useNavigate } from "react-router-dom";
+// import {
+//   Col,
+//   Form,
+//   Input,
+//   Row,
+//   Button,
+//   Checkbox,
+// } from "antd";
+// import "../../styles/Login.scss";
+// import {
+//   BackgroundContentRight,
+//   Title,
+//   DescLogin,
+//   LinkAccount,
+//   Account,
+//   WithOutLogin,
+//   Logo1,
+//   Logo2,
+//   Logo3,
+//   Logo4,
+//   LoginWithOut,
+//   CustomCheckbox,
+//   CustomBtnLogin,
+//   CustomInput,
+//   CustomInputPassword,
+// } from "../../styles/styled";
+// import styled, { css } from "styled-components";
+// import bg from "../../assets/Rectangle1.png";
+// import { useNavigate } from "react-router-dom";
 
 const Resgister: React.FC = () => {
-    const history = useNavigate();
-
-    const handleOnClickLogin= (e: any) => {
-        e.preventDefault();
-        history('/login');
-    }
-  const onFinish = (values: any) => {
-    console.log("Received values of form: ", values);
-  };
+  //   const history = useNavigate();
+  //   const handleOnClickLogin= (e: any) => {
+  //       e.preventDefault();
+  //       history('/login');
+  //   }
+  // const onFinish = (values: any) => {
+  //   console.log("Received values of form: ", values);
+  // };
 
   return (
     <>
       
-      <div
+      {/* <div
       // style={{
       //   display: "flex",
       //   alignItems: "center",
@@ -142,7 +141,7 @@ const Resgister: React.FC = () => {
             </div>
           </Col>
         </Row>
-      </div>
+      </div> */}
     </>
   );
 };
