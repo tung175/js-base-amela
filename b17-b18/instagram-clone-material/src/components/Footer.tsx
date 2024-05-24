@@ -15,8 +15,16 @@ import {
 import FolderIcon from "@mui/icons-material/Folder";
 import DeleteIcon from "@mui/icons-material/Delete";
 import "../styles/Footer.scss";
+import { useEffect, useState } from "react";
 const drawerWidth = 320;
 const Footer = () => {
+  const [listSuggest, setListSuggest] = useState([]);
+  useEffect(() => {
+    fetch("https://reqres.in/api/users")
+      .then((response: any) => response.json())
+      .then((data) => setListSuggest(data.data));
+  }, []);
+  console.log(listSuggest);
   return (
     <>
       <Box sx={{ display: "flex" }}>
@@ -56,55 +64,31 @@ const Footer = () => {
               <span>Gợi ý cho bạn</span>
               <a href="#">Xem thêm</a>
             </div>
-            <ListItem
-              alignItems="flex-start"
-              secondaryAction={<a href="#"> Theo dõi</a>}
-            >
-              <ListItemAvatar>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-              </ListItemAvatar>
-              <ListItemText primary="ngw_vieht" secondary={"Gợi ý cho bạn"} />
-            </ListItem>
-            <Divider variant="inset" component="li" />
-            <ListItem
-              alignItems="flex-start"
-              secondaryAction={<a href="#"> Theo dõi</a>}
-            >
-              <ListItemAvatar>
-                <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
-              </ListItemAvatar>
-              <ListItemText primary="ng.oc90" secondary={"Gợi ý cho bạn"} />
-            </ListItem>
-            <Divider variant="inset" component="li" />
-            <ListItem
-              alignItems="flex-start"
-              secondaryAction={<a href="#"> Theo dõi</a>}
-            >
-              <ListItemAvatar>
-                <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-              </ListItemAvatar>
-              <ListItemText primary="changcheng_1505" secondary={"Gợi ý cho bạn"} />
-            </ListItem>
-            <Divider variant="inset" component="li" />
-            <ListItem
-              alignItems="flex-start"
-              secondaryAction={<a href="#"> Theo dõi</a>}
-            >
-              <ListItemAvatar>
-                <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-              </ListItemAvatar>
-              <ListItemText primary="phuongnam2001" secondary={"Gợi ý cho bạn"} />
-            </ListItem>
-            <Divider variant="inset" component="li" />
-            <ListItem
-              alignItems="flex-start"
-              secondaryAction={<a href="#"> Theo dõi</a>}
-            >
-              <ListItemAvatar>
-                <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-              </ListItemAvatar>
-              <ListItemText primary="luonghieu2603" secondary={"Gợi ý cho bạn"} />
-            </ListItem>
+            {listSuggest &&
+              listSuggest.length > 0 &&
+              listSuggest.map((item: any, index) => {
+                return (
+                  <>
+                    <ListItem
+                    key={item.id}
+                      alignItems="flex-start"
+                      secondaryAction={<a href="#"> Theo dõi</a>}
+                    >
+                      <ListItemAvatar>
+                        <Avatar
+                          alt="Remy Sharp"
+                          src={item.avatar}
+                        />
+                      </ListItemAvatar>
+                      <ListItemText
+                        primary={item.first_name + "_" + item.last_name}
+                        secondary={"Gợi ý cho bạn"}
+                      />
+                    </ListItem>
+                    <Divider variant="inset" component="li" />
+                  </>
+                );
+              })}
           </List>
           <Toolbar>
             <Typography

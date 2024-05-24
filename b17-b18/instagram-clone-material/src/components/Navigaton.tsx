@@ -15,6 +15,8 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import MovieIcon from "@mui/icons-material/Movie";
 import AddBoxIcon from '@mui/icons-material/AddBox';
+import TelegramIcon from '@mui/icons-material/Telegram';
+import "../styles/Navigation.scss"
 const drawerWidth = 240;
 const Navigation = () => {
   return (
@@ -22,6 +24,8 @@ const Navigation = () => {
       <div style={{ display: "flex" }}>
         <CssBaseline />
         <Drawer
+        // classes={}
+        className="navigation-drawer"
           sx={{
             width: drawerWidth,
             flexShrink: 0,
@@ -65,9 +69,15 @@ const Navigation = () => {
             </ListItem>
             <ListItem button>
               <ListItemIcon>
+                <TelegramIcon />
+              </ListItemIcon>
+              <ListItemText primary="Tin nhắn" />
+            </ListItem>
+            <ListItem button>
+              <ListItemIcon>
                 <FavoriteIcon />
               </ListItemIcon>
-              <ListItemText primary="Tin Nhắn" />
+              <ListItemText primary="Thông báo" />
             </ListItem>
             <ListItem button>
               <ListItemIcon>
